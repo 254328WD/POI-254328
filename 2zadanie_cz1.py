@@ -19,7 +19,7 @@ def find_clusters_dbscan(points, eps=0.1, min_samples=10):
     labels = dbscan.fit_predict(points)
     unique_labels = np.unique(labels)
     clusters = [points[labels == label] for label in unique_labels if
-                label != -1]  # Pomijamy punkty nieprzypisane do żadnego klastra (-1)
+                label != -1]
     return clusters[:10]  # Zwracamy tylko 10 pierwszych klastrów
 
 
@@ -42,7 +42,7 @@ eps = 0.1
 min_samples = 10
 
 # Parametr określający, kiedy uważamy chmurę za płaszczyznę
-threshold_distance = 0.05  # Możesz dostosować ten próg
+threshold_distance = 0.05
 
 # Wczytywanie i dopasowanie płaszczyzny dla każdej chmury
 for file_path in file_paths:
