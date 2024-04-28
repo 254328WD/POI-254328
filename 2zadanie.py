@@ -52,7 +52,7 @@ def fit_plane_ransac(points, num_iterations, distance_threshold):
     return normal_vector_normalized, best_distance
 
 
-# Ścieżki do plików .xyz - zastąp swoimi ścieżkami
+# Ścieżki do plików .xyz
 file_paths = [
     'horizontal_surface.xyz',
     'vertical_surface.xyz',
@@ -60,7 +60,7 @@ file_paths = [
 ]
 
 # Parametr określający, kiedy uważamy chmurę za płaszczyznę
-threshold_distance = 0.05  # Możesz dostosować ten próg
+threshold_distance = 0.05 
 
 # Wczytywanie i dopasowanie płaszczyzny dla każdej chmury
 for file_path in file_paths:
@@ -71,7 +71,7 @@ for file_path in file_paths:
         normal_vector, mean_distance = fit_plane_ransac(cluster, num_iterations=100, distance_threshold=0.01)
         is_plane = mean_distance < threshold_distance
         # Określenie czy płaszczyzna jest pionowa czy pozioma
-        if np.isclose(normal_vector[2], 0, atol=0.1):  # atol to tolerancja, którą można dostosować
+        if np.isclose(normal_vector[2], 0, atol=0.1):
             plane_type = 'pionowa'
         else:
             plane_type = 'pozioma'
